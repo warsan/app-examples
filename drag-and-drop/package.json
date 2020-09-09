@@ -1,0 +1,14 @@
+{
+  "name": "drag-and-drop",
+  "version": "0.0.1",
+  "description": "This is a sample of plugin with drag-and-drop content to the canvas",
+  "scripts": {
+    "start": "serve -p 8081",
+    "start-proxy": "ngrok http 8081"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ngrok": "3.3.0",
+    "serve": "11.3.2"
+  }
+}

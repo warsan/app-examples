@@ -7,6 +7,7 @@ This is a sample of plugin with drag-and-drop content to the canvas:
 ## How to use
 
 - Clone the repo
-- Run _http-server_ in root rep folder: `http-server -p 8081`
-- Run _ngrok_ for https: `ngrok http 8081`
+- run `npm install`
+- Run `npm start` in a terminal window
+- Run `npm run start-proxy` in another terminal window to run ngrok
 - Get https url from _ngrok_ and paste it in `iframe url` in your app settings.
