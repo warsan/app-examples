@@ -32,7 +32,7 @@ app.get('/oauth', async (req, res) => {
 	if (response) {
 		db.addAuthorization(response)
 	}
-	res.send('App has been installed, open <br>response: ' + JSON.stringify(response))
+	res.send('Приложение установлено, откройте <br> ответ: ' + JSON.stringify(response))
 })
 
 app.get('/boards-list/', async (req, res) => {
@@ -46,12 +46,12 @@ app.get('/boards-list/', async (req, res) => {
 				res.send(error)
 			})
 	} else {
-		res.send('You are not authorized yet')
+		res.send('Вы ещё не авторизованы')
 	}
 })
 
 app.listen(port, () => {
-	console.log(`App listening on port ${port}`)
+	console.log(`Приложение прослушивает порт ${port}`)
 	db.init()
 })
 
@@ -61,6 +61,6 @@ app.post('/events', (req, res) => {
 	if (verificationToken === config.WEBHOOKS_VERIFICATION_TOKEN) {
 		events.processEvent(req.body, res)
 	} else {
-		res.status(400).send('Incorrect verification token')
+		res.status(400).send('Неверный токен подтверждения')
 	}
 })
