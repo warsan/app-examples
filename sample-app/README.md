@@ -1,27 +1,27 @@
-# Sample Miro app
-Handy playground for playing with Miro Board API and Web-plugins.
+# Пример приложения Miro
+Удобная игровая площадка для игры с Miro Board API и веб-плагинами.
 
 
-### How to use
+### Как пользоваться
 1) Run `npm install`
 2) Run `npm run start`
-3) Run `npm run ngrok` in another terminal 
+3) Run `npm run ngrok` в другом терминале
 4) Edit `src/config.js`:
     - Set BASE_URL from ngrok
-    - Set CLIENT_ID from the App settings
-    - Set CLIENT_SECRET from the App settings
-5) Open app landing (url from ngrok, like https://--------.ngrok.io)
-6) Configure web-plugin — set iframe url in App settings
-7) Explore it    
+    - Set CLIENT_ID из настроек приложения
+    - Set CLIENT_SECRET из настроек приложения
+5) Посадка открытого приложения (url от ngrok, например https://--------.ngrok.io)
+6) Настроить веб-плагин - установить url iframe в настройках приложения
+7) Исследуй это  
 
-### How it works
+### Как это устроено
 
-`app.js` is the entry point
+`app.js` это точка входа
 
-`api.js` contains methods for work with API
+`api.js` содержит методы для работы с API
 
-`config.js` contains configs, edit this file before usage
+`config.js` содержит конфиги, отредактируйте этот файл перед использованием
 
-`events.js` process webhook events
+`events.js` обрабатывать события webhook
  
-`db.js` is simple DataBase which works with file database.txt
+`db.js` простая база данных, которая работает с файлом database.txt
