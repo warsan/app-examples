@@ -1,28 +1,28 @@
-## Intro
-This is a sample roadmap template builder you can build on Miro web SDK. 
-It shows how to create and position on the board multiple widgets of different types and render create custom interfaces in the library.
+## Вступление
+Это пример конструктора шаблонов дорожной карты, который вы можете создать на веб-SDK Miro.
+Он показывает, как создавать и размещать на доске несколько виджетов разных типов, а также создавать настраиваемые интерфейсы в библиотеке.
 
 <img src="images/template-builder.gif" alt="template-builder" />
 
-## Preparation
+## Подготовка
 
-###### Step 1. Clone the repo and install the dependencies
+###### Шаг 1. Клонируйте репо и установите зависимости.
 ```bash 
 git clone https://github.com/miroapp/app-examples.git
 cd app-examples/template-builder
 ``` 
 
-###### Step 2. Start [http-server](https://www.npmjs.com/package/http-server) locally 
+###### Шаг 2. Запустите [http-сервер](https://www.npmjs.com/package/http-server) локально
 ```bash
 http-server
 ```
 
-###### Step 3. Expose a local web server to the internet
+###### Шаг 3. Подключите локальный веб-сервер к Интернету.
 ```bash
 ngrok http 8080
 ```
 
-###### Step 4. Create App in Miro
-- This [guide](https://developers.miro.com/docs/getting-started) shows you how to do it.
+###### Шаг 4. Создайте приложение в Miro
+- В этом [руководстве](https://developers.miro.com/docs/getting-started) показано, как это сделать.
 
-- Install the application
+- Установить приложение
