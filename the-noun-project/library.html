@@ -130,7 +130,7 @@
 </svg>
 
 <div class="search_box">
-    <input type="text" class="search-input" placeholder="Search">
+    <input type="text" class="search-input" placeholder="Поиск">
     <svg class="search-button">
         <use xlink:href="#search-icon"></use>
     </svg>
@@ -155,7 +155,7 @@
 
 	var ENTER_KEYCODE = 13
 	var PAGINATION_SCROLL_DELTA = 400
-	var MAX_OFFSET = 200 // hack to fix endless pagination in the noun project
+	var MAX_OFFSET = 200 // взломать, чтобы исправить бесконечную разбивку на страницы в существительном проекте
 
 	var scrollableContainer = document.querySelector('.scrollable-container')
 	var itemsContainer = document.querySelector('.items_container')
@@ -209,16 +209,16 @@
 
 	function bootstrap() {
 		hideLoader()
-        // Deprecated - use instead miro.board.ui.initDraggableItemsContainer
+        // Устарело - используйте вместо этого miro.board.ui.initDraggableItemsContainer
 		miro.helpers.initScrollableContainerWithDraggableImages(itemsContainer, {draggableImageSelector: '.image-item'})
 	}
 
 	function showNotFoundMessage(query) {
-		itemsContainer.innerHTML = '<h3>Icons for "' + query + '" not found</h3>'
+		itemsContainer.innerHTML = '<h3>Иконки для "' + query + '" не найдены</h3>'
 	}
 
 	function showErrorMessage() {
-		itemsContainer.innerHTML = '<h3>Something went wrong</h3>'
+		itemsContainer.innerHTML = '<h3>Что-то пошло не так</h3>'
 	}
 
 	function scrollHandler() {
