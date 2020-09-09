@@ -7,16 +7,16 @@ miro.onReady(() => {
         positionPriority: 1,
         onClick: async () => {
 
-          // Get selected widgets
+          // Получить выбранные виджеты
           let selectedWidgets = await miro.board.selection.get()
 
-          // Filter stickers from selected widgets
+          // Фильтровать стикеры из выбранных виджетов
           let stickers = selectedWidgets.filter(widget => widget.type === 'STICKER')
 
-          // Delete selected stickers
+          // Удалить выбранные стикеры
           await miro.board.widgets.deleteById(stickers.map(sticker => sticker.id))
 
-          // Create shapes from selected stickers
+          // Создание фигур из выбранных наклеек
           await miro.board.widgets.create(stickers.map(sticker => ({
             type: 'shape',
             text: sticker.text,
@@ -26,8 +26,8 @@ miro.onReady(() => {
             height: sticker.bounds.height,
           })))
 
-          // Show success message
-          miro.showNotification('Stickers has been converted')
+          // Показать сообщение об успехе
+          miro.showNotification('Наклейки были преобразованы')
         }
       }
     }
