@@ -1,5 +1,5 @@
-## How to restrict buttons visibility.
-- show button only for authorized users (authorized.html)
-- show button only for editors (editor.html)
-- show button only for team member (team-member.html)
-- show button only for users logged into Miro (signedin.html)
+## Как ограничить видимость кнопок.
+- показать кнопку только для авторизованных пользователей (authorized.html)
+- Показать кнопку только для редакторов (editor.html)
+- показать кнопку только для члена команды (team-member.html)
+- Показать кнопку только для пользователей, вошедших в Miro (signedin.html)
