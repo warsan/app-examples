@@ -2,56 +2,56 @@ declare const miro: SDK.Root
 
 declare module SDK {
 	interface Root {
-		// Use SDK after callback was called
+		// Использовать SDK после вызова обратного вызова
 		onReady(callback: () => void): void
 
-		// Available only in main.js on a board page
+		// Доступно только в main.js на странице форума
 		initialize(config?: IPluginConfig): Promise<void>
 
-		// Available only when Web-plugin is run on a settings page
+		// Доступно только при запуске веб-плагина на странице настроек
 		initializeSettings(config?: IPluginSettingsConfig): Promise<void>
 
-		// Available only when Web-plugin is run on a board page
+		// Доступно только при запуске веб-плагина на странице форума.
 		board: IBoardCommands
 
-		// Account where Web-plugin has been installed
+		// Аккаунт, на котором установлен веб-плагин
 		account: IAccountCommands
 
 		currentUser: ICurrentUserCommands
 
 		enums: IEnums
 
-		// Some events require scope: BOARDS:READ
-		// Available only when Web-plugin is run on a board page
+		// Для некоторых событий требуется область действия: ДОСКИ: ЧИТАТЬ
+		// Доступно только при запуске веб-плагина на странице форума.
 		addListener(event: EventType, listener: (e: Event) => void): void
 
-		// Available only when Web-plugin is run on a board page
+		// Доступно только при запуске веб-плагина на странице форума.
 		removeListener(event: EventType, listener: (e: Event) => void): void
 
-		// Broadcast some data to all other iframes.
-		// Other iframes can get this data from DATA_BROADCASTED event
+		// Передайте некоторые данные всем остальным фреймам.
+		// Другие iframe могут получить эти данные из события DATA_BROADCASTED
 		broadcastData(data: any): void
 
 		showNotification(text: string): Promise<void>
 
 		showErrorNotification(text: string): void
 
-		// Check is current user has authorized your Web-plugin to make API requests on their behalf
+		// Убедитесь, что текущий пользователь разрешил вашему веб-плагину делать запросы API от его имени.
 		isAuthorized(): Promise<boolean>
 
-		// Get OAuth token for current user to make requests REST API
+		// Получите токен OAuth, чтобы текущий пользователь мог делать запросы REST API
 		getToken(): Promise<string>
 
-		// Opens auth popup.
-		// To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
-		// Method returns a token you can use to make requests REST API on behalf of the current user.
+		// Открывает всплывающее окно авторизации.
+		// Чтобы браузер не блокировал это всплывающее окно, вызывайте miro.authorize только из обработчика кликов в вашем домене.
+		// Метод возвращает токен, который вы можете использовать для выполнения запросов REST API от имени текущего пользователя.
 		authorize(options: AuthorizationOptions): Promise<string>
 
-		// Returns clientId that you can find in app settings.
-		// clientId needs to use widgets' metadata
+		// Возвращает clientId, который вы можете найти в настройках приложения.
+		// clientId должен использовать метаданные виджетов
 		getClientId(): string
 
-		// You can save some state shared between all iframes.
+		// Вы можете сохранить состояние, разделяемое всеми фреймами.
 		__setRuntimeState<T = any>(data: T): Promise<T>
 		__getRuntimeState<T = any>(): Promise<T>
 	}
@@ -61,14 +61,14 @@ declare module SDK {
 		| 'WIDGETS_CREATED'
 		| 'WIDGETS_DELETED'
 		| 'WIDGETS_TRANSFORMATION_UPDATED'
-		| 'ESC_PRESSED' //Experimental event
-		| 'ALL_WIDGETS_LOADED' //Experimental event
-		| 'COMMENT_CREATED' //Experimental event
-		| 'CANVAS_CLICKED' //Experimental event
-		| 'DATA_BROADCASTED' //Experimental event
-		| 'RUNTIME_STATE_UPDATED' //Experimental event
-		| 'METADATA_CHANGED' //Experimental event
-		| 'ONLINE_USERS_CHANGED' //Experimental event
+		| 'ESC_PRESSED' //Экспериментальное мероприятие
+		| 'ALL_WIDGETS_LOADED' //Экспериментальное мероприятие
+		| 'COMMENT_CREATED' //Экспериментальное мероприятие
+		| 'CANVAS_CLICKED' //Экспериментальное мероприятие
+		| 'DATA_BROADCASTED' //Экспериментальное мероприятие
+		| 'RUNTIME_STATE_UPDATED' //Экспериментальное мероприятие
+		| 'METADATA_CHANGED' //Экспериментальное мероприятие
+		| 'ONLINE_USERS_CHANGED' //Экспериментальное мероприятие
 
 	interface Event {
 		type: string | EventType
@@ -95,8 +95,8 @@ declare module SDK {
 		bottomBar?: ButtonExtensionPoint<BottomBarButton>
 		exportMenu?: ButtonExtensionPoint<ExportMenuButton>
 
-		// Promise should be resolve within 400ms otherwise, buttons will not be shown in widget menu
-		// One plugin can add up to 3 buttons in widget` menu
+		// Обещание должно быть разрешено в течение 400 мс, в противном случае кнопки не будут отображаться в меню виджетов.
+		// Один плагин может добавить до 3-х кнопок в меню виджетов.
 		getWidgetMenuItems?: (widgets: IWidget[], editMode: boolean) => Promise<IWidgetMenuItem | IWidgetMenuItem[]>
 	}
 
@@ -145,33 +145,33 @@ declare module SDK {
 	}
 
 	interface DraggableItemsContainerOptions {
-		dragDirection?: string // Values are 'horizontal' | 'vertical' // 'horizontal' is default
+		dragDirection?: string // Ценности 'horizontal' | 'vertical' // 'horizontal' по умолчанию
 
-		// css selector for draggable items
+		// css-селектор для перетаскиваемых элементов
 		draggableItemSelector: string
 
-		// Dragging started
+		// Перетаскивание началось
 		getDraggableItemPreview: (
 			targetElement: HTMLElement
 		) => {
-			width?: number // 100 is default
-			height?: number // 100 is default
-			url: string // Supported schemas: 'https://', 'data:image/svg+xml', 'data:image/png;base64'
+			width?: number // 100 по умолчанию
+			height?: number // 100 по умолчанию
+			url: string // Поддерживаемые схемы: 'https://', 'data:image/svg+xml', 'data:image/png;base64'
 		}
 
-		// Optional. Draggable item was clicked
+		// По желанию. Был нажат перетаскиваемый элемент
 		onClick?: (targetElement: HTMLElement) => void
 
-		// Draggable item was dropped
+		// Перетаскиваемый элемент был сброшен
 		onDrop: (canvasX: number, canvasY: number, targetElement: HTMLElement) => void
 
-		// Optional. Draggable item was dropped not under canvas
+		// По желанию. Перетаскиваемый элемент упал не под холст
 		onCancel?: () => void
 	}
 
 	interface IAccountCommands {
 		/**
-		 * Requires scope: TEAM:READ
+		 * Требуется объем: TEAM:READ
 		 */
 		get(): Promise<IAccountInfo>
 	}
@@ -182,17 +182,17 @@ declare module SDK {
 		getScopes(): Promise<string[]>
 
 		/**
-		 * Requires scope: IDENTITY:READ
+		 * Требуется объем: IDENTITY:READ
 		 */
 		getCurrentBoardPermissions(): Promise<BoardPermission[]>
 
 		/**
-		 * Requires scope: IDENTITY:READ
+		 * Требуется объем: IDENTITY:READ
 		 */
 		getCurrentAccountPermissions(): Promise<AccountPermission[]>
 
 		/**
-		 * Requires scope: IDENTITY:READ
+		 * Требуется объем: IDENTITY:READ
 		 */
 		isMemberOfCurrentAccount(): Promise<boolean>
 	}
@@ -205,39 +205,39 @@ declare module SDK {
 	}
 
 	interface IBoardUICommands {
-		// Promise will resolves when sidebar closes
+		// Обещание разрешится, когда боковая панель закроется
 		openLeftSidebar(iframeURL: string, options?: {width?: number}): Promise<any>
 
-		// Promise will resolves when library closes
+		// Обещание разрешится, когда библиотека закроется
 		openLibrary(iframeURL: string, options: {title: string}): Promise<any>
 
-		// Promise will resolves when modal closes
+		// Обещание разрешится при закрытии модального окна
 		openModal(iframeURL: string, options?: {width?: number; height?: number} | {fullscreen: boolean}): Promise<any>
 
-		// Promise will resolves when bottomPanel closes
+		// Promise разрешится, когда bottomPanel закроется
 		// options.width: default is 120px, min is 80px, max is 320px
 		// options.height: default is 48px, min is 48px, max is 200px
 		openBottomPanel(iframeURL: string, options?: {width?: number; height?: number}): Promise<any>
 
-		// Throws error if sidebar opened not by this plugin
+		// Выдает ошибку, если боковая панель открыта не этим плагином
 		closeLeftSidebar(data?: any): void
 
-		// Throws error if library opened not by this plugin
+		// Выдает ошибку, если библиотека открыта не этим плагином
 		closeLibrary(data?: any): void
 
-		// Throws error if modal opened not by this plugin
+		// Выдает ошибку, если модальное окно открыто не этим плагином
 		closeModal(data?: any): void
 
 		closeBottomPanel(data?: any): void
 
-		// Resize the current iFrame inside sidebar or modal (currently supports bottom-panel only)
-		// You can pass HTMLElement, css selector or size
+		// Изменить размер текущего iFrame внутри боковой панели или модального окна (в настоящее время поддерживается только нижняя панель)
+		// Вы можете передать HTMLElement, селектор CSS или размер
 		resizeTo(value: HTMLElement | string | {width?: number; height?: number}): void
 
-		// Add the ability to drag-and-drop objects from custom view to the canvas
+		// Добавить возможность перетаскивать объекты из настраиваемого представления на холст
 		initDraggableItemsContainer(container: HTMLElement, options: DraggableItemsContainerOptions): void
 
-		// Switch current tool to select mode
+		// Переключить текущий инструмент в режим выбора
 		__selectDefaultTool(): void
 
 		__hideButtonsPanels(panels: 'all' | UIPanel | UIPanel[]): void
@@ -252,14 +252,14 @@ declare module SDK {
 	type UIPanel = 'toolbar' | 'top' | 'bottomBar' | 'map'
 
 	interface IBoardUtils {
-		/** Calculate widgets union boundaries */
+		/** Вычислить границы объединения виджетов */
 		unionWidgetBounds(widgets: {bounds: IBounds}[]): IBounds
 	}
 
 	interface IViewportOptions {
-		/**  Get gap size between result and target viewport. Zero padding by default  */
+		/**  Получите размер зазора между результатом и целевым окном просмотра. Нулевое заполнение по умолчанию  */
 		padding?: IOffset
-		animationTimeInMS?: number // No animation by default
+		animationTimeInMS?: number // По умолчанию анимация отсутствует
 	}
 
 	interface IBoardViewportCommands {
@@ -268,68 +268,68 @@ declare module SDK {
 
 		getScale(): Promise<number>
 
-		/** Get size of default UI panels on viewport sides.
+		/** Получить размер панелей пользовательского интерфейса по умолчанию на сторонах области просмотра.
 		 *  Return value: {left: 60, top: 60, right: 0, bottom: 60} */
 		getBoardUIPadding(): IOffset
 
-		// [Experimental feature] Add black mask over canvas
+		// [Экспериментальная функция] Добавьте чёрную маску на холст
 		__mask(viewport: IRect, padding?: IOffset): void
 
-		// [Experimental feature] Remove mask
+		// [Экспериментальная функция] Удалить маску
 		__unmask(): void
 	}
 
 	interface IBoardSelectionCommands {
 		/**
-		 * Returns selected widgets
-		 * Requires scope: BOARDS:READ
+		 * Возвращает выбранные виджеты
+		 * Требуется объем: BOARDS:READ
 		 */
 		get(): Promise<IWidget[]>
 
 		/**
-		 * Select target widgets
-		 * Returns selected widgets
+		 * Выберите целевые виджеты
+		 * Возвращает выбранные виджеты
 		 * Requires scope: BOARDS:READ
 		 */
 		selectWidgets(widgetIds: InputWidgets): Promise<IWidget[]>
 
 		/**
-		 * Unselect all widgets
+		 * Отменить выбор всех виджетов
 		 */
 		clear(): Promise<void>
 
 		/**
-		 * Get selected widgets id after user selects it
-		 * Currently user can select only one widget.
-		 * Warning! Use this command in main iframe only.
+		 * Получить идентификатор выбранного виджета после того, как пользователь выберет его
+		 * В настоящее время пользователь может выбрать только один виджет.
+		 * Предупреждение! Используйте эту команду только в основном iframe.
 		 */
 		enterSelectWidgetsMode(): Promise<{selectedWidgets: IWidget[]}>
 	}
 
 	interface IBoardWidgetsCommands {
 		/**
-		 * 'type' is required
+		 * 'type' необходимо
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		create<T extends IWidget>(widgets: OneOrMany<{type: string; [index: string]: any}>): Promise<T[]>
 
 		/**
-		 * filterBy uses https://lodash.com/docs/4.17.11#filter
+		 * filterBy использует https://lodash.com/docs/4.17.11#filter
 		 * Requires scope: BOARDS:READ
 		 */
 		get<T extends IWidget>(filterBy?: Object): Promise<T[]>
 
 		/**
-		 * 'id' is required
+		 * 'id' необходимо
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		update<T extends IWidget>(widgets: OneOrMany<{id: string; [index: string]: any}>): Promise<T[]>
 
 		/**
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		transformDelta(
 			widgetIds: InputWidgets,
@@ -340,35 +340,35 @@ declare module SDK {
 
 		/**
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		deleteById(widgetIds: InputWidgets): Promise<void>
 
 		/**
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		bringForward(widgetId: InputWidgets): Promise<void>
 
 		/**
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		sendBackward(widgetId: InputWidgets): Promise<void>
 
 		/**
-		 * Checks whether all widgets on the board has loaded
+		 * Проверяет, все ли виджеты на доске загружены
 		 */
 		areAllWidgetsLoaded(): Promise<boolean>
 
 		/**
 		 * Requires scope: BOARDS:READ
-		 * [Experimental feature] Find all widgets intersected with passed area
+		 * [Экспериментальная функция] Найти все виджеты, пересекающиеся с пройденной областью
 		 */
 		__getIntersectedObjects(pointOrRect: IPoint | IRect): Promise<IWidget[]>
 
 		/**
-		 * [Experimental feature] Do blink animation for target widget
+		 * [Экспериментальная функция] Анимация моргания для целевого виджета
 		 */
 		__blinkWidget(widgets: InputWidgets): Promise<void>
 	}
@@ -377,9 +377,9 @@ declare module SDK {
 	type CreateTagRequest = {title: string; color: number | string; widgetIds?: InputWidgets}
 	type UpdateTagRequest = {id: string; title?: string; color?: number | string; widgetIds?: InputWidgets}
 
-	// API for tags is experimental.
-	// It will become stable in June 2020.
-	// During the experimental period API for tags could change.
+	// API для тегов экспериментальный.
+	// Он станет стабильным в июне 2020 года.
+	// В течение экспериментального периода API для тегов мог измениться.
 	interface IBoardTagsCommands {
 		/**
 		 * 'title' is required
@@ -389,21 +389,21 @@ declare module SDK {
 
 		/**
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		create(tags: OneOrMany<CreateTagRequest>): Promise<ITag[]>
 
 		/**
 		 * 'id' is required
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		update(tags: OneOrMany<UpdateTagRequest>): Promise<ITag[]>
 
 		/**
 		 * 'title' is required
 		 * Requires scope: BOARDS:WRITE
-		 * Requires BoardPermission.EDIT_CONTENT for current user
+		 * Requires BoardPermission.EDIT_CONTENT для текущего пользователя
 		 */
 		delete(tags: InputTags): Promise<void>
 	}
@@ -436,7 +436,7 @@ declare module SDK {
 	}
 
 	////////////////////////////////////////////////////////////////////////
-	// Widget data types
+	// Типы данных виджета
 	////////////////////////////////////////////////////////////////////////
 
 	type OneOrMany<T> = T | T[]
@@ -504,10 +504,10 @@ declare module SDK {
 		y: number
 		scale: number
 
-		/** Text with HTML characters */
+		/** Текст с символами HTML */
 		text: string
 
-		/** Clear text without HTML characters */
+		/** Очистить текст без символов HTML */
 		plainText: string
 		style: {
 			stickerBackgroundColor: BackgroundColorStyle
@@ -529,10 +529,10 @@ declare module SDK {
 		height: number
 		rotation: number
 
-		/** Text with HTML characters */
+		/** Текст с символами HTML */
 		text: string
 
-		/** Clear text without HTML characters */
+		/** Очистить текст без символов HTML */
 		plainText: string
 		style: {
 			shapeType: ShapeType
@@ -555,8 +555,8 @@ declare module SDK {
 		}
 	}
 
-	// Currently lines can be created between two widgets only
-	// 'startWidgetId' and 'endWidgetId' fields are required for creation
+	// В настоящее время линии можно создавать только между двумя виджетами.
+	// Поля startWidgetId и endWidgetId необходимы для создания.
 	interface ILineWidget extends IWidget {
 		type: 'LINE'
 		startWidgetId: string | undefined
@@ -686,7 +686,7 @@ declare module SDK {
 	}
 
 	////////////////////////////////////////////////////////////////////////
-	// Helpers data
+	// Данные помощников
 	////////////////////////////////////////////////////////////////////////
 
 	type BoardPermission = 'EDIT_INFO' | 'EDIT_CONTENT' | 'EDIT_COMMENTS'
@@ -725,7 +725,7 @@ declare module SDK {
 		big: string
 		medium: string
 		small: string
-		image: string //original picture
+		image: string //исходное изображение
 	}
 
 	interface IRect {
@@ -759,7 +759,7 @@ declare module SDK {
 	}
 
 	/////////////////////////////////////////////
-	// Style types
+	// Типы стилей
 	/////////////////////////////////////////////
 	type BackgroundColorStyle = string | number
 	type BackgroundOpacityStyle = number
