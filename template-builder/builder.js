@@ -3,7 +3,7 @@ const colors = [
   '#E4B2EE', '#EEB2DA', '#25CED1', '#FFFFFF',
   '#FCDCC7', '#FF8A5B', '#EA526F'
 ]
-const workDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+const workDays = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница']
 const columnWidth = 150
 const rowHeight = 100
 const fontSize = 36
