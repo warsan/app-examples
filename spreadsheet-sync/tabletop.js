@@ -4,9 +4,9 @@
   var inNodeJS = typeof process !== 'undefined' && !process.browser;
 
   var request = function requestNotProvided() {
-    throw new Error("The 'request' module is only available while running in Node.");
+    throw new Error("Модуль «запрос» доступен только при работе в Node.");
   };
-  if(inNodeJS) { // This will get stripped out by Uglify, and Webpack will not include it
+  if(inNodeJS) { // Это будет удалено Uglify, и Webpack не будет включать его
     request = require('request');
   }
 
@@ -24,12 +24,9 @@
     }
   } catch (e) { }
 
-  // Create a simple indexOf function for support
-  // of older browsers.  Uses native indexOf if
-  // available.  Code similar to underscores.
-  // By making a separate function, instead of adding
-  // to the prototype, we will not break bad for loops
-  // in older browsers
+  // Создайте простую функцию indexOf для поддержки старых браузеров. 
+  // Использует собственный indexOf, если доступен. Код похож на подчеркивание.
+  // Создав отдельную функцию вместо добавления к прототипу, мы не нарушим циклы в старых браузерах
   var indexOfProto = Array.prototype.indexOf;
   var ttIndexOf = function(array, item) {
     var i = 0, l = array.length;
@@ -47,15 +44,15 @@
   };
 
   /*
-    Initialize with Tabletop.init( { key: '0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc' } )
+    Инициализировать с помощью Tabletop.init( { key: '0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc' } )
       OR!
-    Initialize with Tabletop.init( { key: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc&output=html&widget=true' } )
+    Инициализировать с помощью Tabletop.init( { key: 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc&output=html&widget=true' } )
       OR!
-    Initialize with Tabletop.init('0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc')
+    Инициализировать с помощью Tabletop.init('0AjAPaAU9MeLFdHUxTlJiVVRYNGRJQnRmSnQwTlpoUXc')
   */
 
   var Tabletop = function(options) {
-    // Make sure Tabletop is being used as a constructor no matter what.
+    // Убедитесь, что Tabletop используется как конструктор, несмотря ни на что.
     if(!this || !(this instanceof Tabletop)) {
       return new Tabletop(options);
     }
@@ -83,16 +80,15 @@
     this.sheetPrivacy = this.authkey ? 'private' : 'public'
 
     this.callbackContext = options.callbackContext;
-    // Default to on, unless there's a proxy, in which case it's default off
+    // По умолчанию включено, если нет прокси, и в этом случае он отключен по умолчанию.
     this.prettyColumnNames = typeof(options.prettyColumnNames) === 'undefined' ? !options.proxy : options.prettyColumnNames;
 
     if(typeof(options.proxy) !== 'undefined') {
-      // Remove trailing slash, it will break the app
+      // Удалите косую черту в конце, это сломает приложение
       this.endpoint = options.proxy.replace(/\/$/,'');
       this.simpleUrl = true;
       this.singleton = true;
-      // Let's only use CORS (straight JSON request) when
-      // fetching straight from Google
+      // Давайте использовать CORS (прямой запрос JSON) только при извлечении напрямую из Google
       supportsCORS = false;
     }
 
@@ -105,28 +101,28 @@
       Tabletop.singleton = this;
     }
 
-    /* Be friendly about what you accept */
+    /* Относитесь дружелюбно к тому, что вы принимаете */
     if (/key=/.test(this.key)) {
-      this.log('You passed an old Google Docs url as the key! Attempting to parse.');
+      this.log('Вы передали старый URL-адрес Документов Google в качестве ключа! Попытка разобрать.');
       this.key = this.key.match('key=(.*?)(&|#|$)')[1];
     }
 
     if (/pubhtml/.test(this.key)) {
-      this.log('You passed a new Google Spreadsheets url as the key! Attempting to parse.');
+      this.log('Вы передали новый URL-адрес таблиц Google в качестве ключа! Попытка разобрать.');
       this.key = this.key.match('d\\/(.*?)\\/pubhtml')[1];
     }
 
     if(/spreadsheets\/d/.test(this.key)) {
-      this.log('You passed the most recent version of Google Spreadsheets url as the key! Attempting to parse.');
+      this.log('Вы передали самую последнюю версию URL-адреса таблиц Google в качестве ключа! Попытка разобрать.');
       this.key = this.key.match('d\\/(.*?)\/')[1];
     }
 
     if (!this.key) {
-      this.log('You need to pass Tabletop a key!');
+      this.log('Вам нужно передать Tabletop ключ!');
       return;
     }
 
-    this.log('Initializing with key ' + this.key);
+    this.log('Инициализация с помощью ключа ' + this.key);
 
     this.models = {};
     this.modelNames = [];
@@ -149,16 +145,16 @@
     }
   };
 
-  // A global storage for callbacks.
+  // Глобальное хранилище для обратных вызовов.
   Tabletop.callbacks = {};
 
-  // Backwards compatibility.
+  // Обратная совместимость.
   Tabletop.init = function(options) {
     return new Tabletop(options);
   };
 
   Tabletop.sheets = function() {
-    this.log('Times have changed! You\'ll want to use var tabletop = Tabletop.init(...); tabletop.sheets(...); instead of Tabletop.sheets(...)');
+    this.log('Времена изменились! You\'ll want to use var tabletop = Tabletop.init(...); tabletop.sheets(...); instead of Tabletop.sheets(...)');
   };
 
   Tabletop.prototype = {
@@ -180,9 +176,9 @@
     },
 
     /*
-      This will call the environment appropriate request method.
+      Это вызовет соответствующий метод запроса среды.
 
-      In browser it will use JSON-P, in node it will use request()
+      В браузере он будет использовать JSON-P, в узле - request()
     */
     requestData: function(path, callback) {
       this.log('Requesting', path);
@@ -190,8 +186,8 @@
       if (inNodeJS) {
         this.serverSideFetch(path, callback);
       } else {
-        //CORS only works in IE8/9 across the same protocol
-        //You must have your server on HTTPS to talk to Google, or it'll fall back on injection
+        // CORS работает только в IE8/9 по тому же протоколу
+        // У вас должен быть ваш сервер на HTTPS, чтобы общаться с Google, иначе он вернется к инъекции
         var protocol = this.endpoint.split('//').shift() || 'http';
         if (supportsCORS && (!inLegacyIE || protocol === location.protocol)) {
           this.xhrFetch(path, callback);
@@ -202,10 +198,10 @@
     },
 
     /*
-      Use Cross-Origin XMLHttpRequest to get the data in browsers that support it.
+      Используйте Cross-Origin XMLHttpRequest для получения данных в браузерах, которые его поддерживают.
     */
     xhrFetch: function(path, callback) {
-      //support IE8's separate cross-domain object
+      //поддержка отдельного междоменного объекта IE8
       var xhr = inLegacyIE ? new XDomainRequest() : new XMLHttpRequest();
       xhr.open('GET', this.endpoint + path);
       var self = this;
@@ -225,11 +221,10 @@
     },
 
     /*
-      Insert the URL into the page as a script tag. Once it's loaded the spreadsheet data
-      it triggers the callback. This helps you avoid cross-domain errors
-      http://code.google.com/apis/gdata/samples/spreadsheet_sample.html
+      Вставьте URL-адрес на страницу как тег скрипта. После загрузки данных электронной таблицы запускается обратный вызов. 
+      Это поможет избежать междоменных ошибок http://code.google.com/apis/gdata/samples/spreadsheet_sample.html
 
-      Let's be plain-Jane and not use jQuery or anything.
+      Давайте будем простыми и не будем использовать jQuery или что-то еще.
     */
     injectScript: function(path, callback) {
       var script = document.createElement('script');
@@ -244,8 +239,8 @@
       } else {
         var self = this;
         callbackName = 'tt' + (+new Date()) + (Math.floor(Math.random()*100000));
-        // Create a temp callback which will get removed once it has executed,
-        // this allows multiple instances of Tabletop to coexist.
+        // Создайте временный обратный вызов, который будет удален после его выполнения, 
+        // это позволит сосуществовать нескольким экземплярам Tabletop.
         Tabletop.callbacks[ callbackName ] = function () {
           var args = Array.prototype.slice.call( arguments, 0 );
           callback.apply(self, args);
@@ -258,8 +253,8 @@
       var url = path + '&callback=' + callbackName;
 
       if (this.simpleUrl) {
-        // We've gone down a rabbit hole of passing injectScript the path, so let's
-        // just pull the sheet_id out of the path like the least efficient worker bees
+        // Мы спустились в кроличью нору, передав путь injectScript, поэтому давайте 
+        // просто вытащим sheet_id из пути, как наименее эффективные рабочие пчёлы
         if(path.indexOf('/list/') !== -1) {
           script.src = this.endpoint + '/' + this.key + '-' + path.split('/')[4];
         } else {
@@ -279,7 +274,7 @@
     },
 
     /*
-      This will only run if tabletop is being run in node.js
+      Это будет работать, только если tabletop запускается в node.js
     */
     serverSideFetch: function(path, callback) {
       var self = this;
@@ -294,9 +289,9 @@
     },
 
     /*
-      Is this a sheet you want to pull?
-      If { wanted: ["Sheet1"] } has been specified, only Sheet1 is imported
-      Pulls all sheets if none are specified
+      Это лист, который вы хотите потянуть?
+      Если был указан {хотел: ["Sheet1"]}, импортируется только Sheet1. 
+      Вытягивает все листы, если ни один не указан
     */
     isWanted: function(sheetName) {
       if (this.wanted.length === 0) {
@@ -307,19 +302,17 @@
     },
 
     /*
-      What gets send to the callback
-      if simpleSheet === true, then don't return an array of Tabletop.this.models,
-      only return the first one's elements
+      Что отправляется в обратный вызов, если simpleSheet === true, 
+      то не возвращать массив Tabletop.this.models, возвращать только элементы первого
     */
     data: function() {
-      // If the instance is being queried before the data's been fetched
-      // then return undefined.
+      // Если экземпляр запрашивается до того, как данные были извлечены, тогда верните undefined.
       if (this.modelNames.length === 0) {
         return undefined;
       }
       if (this.simpleSheet) {
         if (this.modelNames.length > 1 && this.debug) {
-          this.log('WARNING You have more than one sheet but are using simple sheet mode! Don\'t blame me when something goes wrong.');
+          this.log('ВНИМАНИЕ! У вас несколько листов, но вы используете простой режим листов! Не вини меня, когда что-то пойдет не так.');
         }
         return this.models[this.modelNames[0]].all();
       } else {
@@ -328,7 +321,7 @@
     },
 
     /*
-      Add another sheet to the wanted list
+      Добавить еще один лист в список розыска
     */
     addWanted: function(sheet) {
       if(ttIndexOf(this.wanted, sheet) === -1) {
@@ -337,12 +330,12 @@
     },
 
     /*
-      Load all worksheets of the spreadsheet, turning each into a Tabletop Model.
-      Need to use injectScript because the worksheet view that you're working from
-      doesn't actually include the data. The list-based feed (/feeds/list/key..) does, though.
-      Calls back to loadSheet in order to get the real work done.
+      Загрузите все рабочие листы электронной таблицы, превратив каждый в настольную модель.
+      Необходимо использовать injectScript, потому что представление рабочего листа, с которым вы работаете, фактически не включает данные. 
+      Тем не менее, канал на основе списка (/feeds/list/key..) делает это.
+      Обратный вызов loadSheet для выполнения реальной работы.
 
-      Used as a callback for the worksheet-based JSON
+      Используется как обратный вызов для JSON на основе рабочего листа
     */
     loadSheets: function(data) {
       var i, ilen;
@@ -391,9 +384,7 @@
     },
 
     /*
-      Access layer for the this.models
-      .sheets() gets you all of the sheets
-      .sheets('Sheet1') gets you the sheet named Sheet1
+      Слой доступа для this.models .sheets() дает вам все листы .sheets('Sheet1') дает вам лист с именем Sheet1
     */
     sheets: function(sheetName) {
       if (typeof sheetName === 'undefined') {
@@ -421,9 +412,7 @@
     },
 
     /*
-      Parse a single list-based worksheet, turning it into a Tabletop Model
-
-      Used as a callback for the list-based JSON
+      Анализируйте один лист на основе списка, превращая его в модель стола, используемую в качестве обратного вызова для JSON на основе списка
     */
     loadSheet: function(data) {
       var that = this;
@@ -440,9 +429,9 @@
     },
 
     /*
-      Execute the callback upon loading! Rely on this.data() because you might
-        only request certain pieces of data (i.e. simpleSheet mode)
-      Tests this.sheetsToLoad just in case a race condition happens to show up
+      Выполнять обратный вызов при загрузке! Положитесь на this.data(), 
+      потому что вы можете запросить только определенные части данных (например, режим simpleSheet). 
+      Проверяет this.sheetsToLoad на случай, если возникнет состояние гонки.
     */
     doCallback: function() {
       if(this.sheetsToLoad === 0) {
@@ -461,10 +450,9 @@
   };
 
   /*
-    Tabletop.Model stores the attribute names and parses the worksheet data
-      to turn it into something worthwhile
+    Tabletop.Model хранит имена атрибутов и анализирует данные рабочего листа, чтобы превратить их во что-то стоящее.
 
-    Options should be in the format { data: XXX }, with XXX being the list-based worksheet
+    Параметры должны быть в формате {data: XXX}, где XXX - лист на основе списка.
   */
   Tabletop.Model = function(options) {
     var i, j, ilen, jlen;
@@ -474,10 +462,10 @@
     this.tabletop = options.tabletop;
     this.elements = [];
     this.onReady = options.onReady;
-    this.raw = options.data; // A copy of the sheet's raw data, for accessing minutiae
+    this.raw = options.data; // Копия исходных данных листа для доступа к мелочам
 
     if (typeof(options.data.feed.entry) === 'undefined') {
-      options.tabletop.log('Missing data for ' + this.name + ', make sure you didn\'t forget column headers');
+      options.tabletop.log('Отсутствуют данные для ' + this.name + ', убедитесь, что вы не забыли заголовки столбцов.');
       this.originalColumns = [];
       this.elements = [];
       this.ready();
@@ -524,7 +512,7 @@
 
   Tabletop.Model.prototype = {
     /*
-      Returns all of the elements (rows) of the worksheet as objects
+      Возвращает все элементы (строки) рабочего листа как объекты
     */
     all: function() {
       return this.elements;
@@ -556,9 +544,9 @@
     },
 
     /*
-     * Store column names as an object
-     * with keys of Google-formatted "columnName"
-     * and values of human-readable "Column name"
+     * Сохранять имена столбцов как объект 
+     * с ключами "columnName" в формате Google 
+     * и значениями "Column name" в удобочитаемом формате.
      */
     loadPrettyColumns: function(data) {
       var prettyColumns = {};
@@ -583,9 +571,9 @@
     },
 
     /*
-     * Go through each row, substitutiting
-     * Google-formatted "columnName"
-     * with human-readable "Column name"
+     * Просмотрите каждую строку, заменяя 
+     * "columnName" в формате Google 
+     * на "название столбца", удобочитаемое для человека.
      */
     prettifyElements: function() {
       var prettyElements = [],
@@ -609,7 +597,7 @@
     },
 
     /*
-      Return the elements as an array of arrays, instead of an array of objects
+      Возвращать элементы как массив массивов вместо массива объектов
     */
     toArray: function() {
       var array = [],
@@ -626,7 +614,7 @@
     }
   };
 
-  if(typeof module !== 'undefined' && module.exports) { //don't just use inNodeJS, we may be in Browserify
+  if(typeof module !== 'undefined' && module.exports) { // не просто используйте inNodeJS, мы можем быть в Browserify
     module.exports = Tabletop;
   } else if (typeof define === 'function' && define.amd) {
     define(function () {
