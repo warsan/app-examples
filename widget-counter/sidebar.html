@@ -96,13 +96,13 @@
 <body>
     <div class="sidebar__content">
         <div id="stat-container" class="stat-list">
-            <div class="stat-list__header">Widget Counter</div>
+            <div class="stat-list__header">Счетчик виджетов</div>
             <!-- <div class="stat-list__table">
                 <div class="stat-list__title">
-                    <span>by Type</span>
+                    <span>по типу</span>
                 </div>
                 <div class="stat-list__empty">
-                    Looks like the selection is empty.
+                    Похоже, что выделение пусто.
                 </div>
                 <div class="stat-list__item">
                     <span class="stat-list__item-name">Sticker</span>
@@ -126,8 +126,8 @@
         clear();
         const statByType = calcByType(selection)
         getContainer().appendChild(createStatTable(
-            "by Type", 
-            "Looks like the selection is empty.", 
+            "по типу", 
+            "Похоже, что выделение пусто.", 
             statByType
         ))
     }
