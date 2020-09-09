@@ -30,4 +30,4 @@
 | [the-noun-project](the-noun-project)     | Другой пример библиотеки иконок: показывает, как перетаскивать <br /> внешние ресурсы на доску. |
 | [widget-counter](widget-counter)         | Вы выбираете несколько виджетов, нажимаете кнопку плагина на нижней панели <br />, и приложение показывает количество виджетов, сгруппированных по типу на боковой панели. |
 | [font-awesome](font-awesome)             | Библиотека иконок Font Awesome. |
-| [spreadsheet-sync](spreadsheet-sync)             | This example shows how to sync data on board with Google Sheets. |
+| [spreadsheet-sync](spreadsheet-sync)             | В этом примере показано, как синхронизировать данные на борту с Google Таблицами. |
