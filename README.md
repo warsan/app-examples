@@ -1,33 +1,33 @@
-# Miro Apps Examples
+# Примеры приложений Miro
 
-In this repository, you can find [types for Miro SDK](miro.d.ts) and several simple examples.
+В этом репозитории вы можете найти [типы для Miro SDK](miro.d.ts) и несколько простых примеров.
 
 ## REST API
 
-|                                                      | Description  |
+|                                                      | Описание  |
 |------------------------------------------------------|--------------|
-| [automate-user-management](automate-user-management) | This example explains how to add and remove members<br /> from your team, based on data from an external source. |
-| [github-issue-importer](github-issue-importer)       | This example shows how to import issues from GitHub<br /> to a board with custom fields using Miro API. |
+| [automate-user-management](automate-user-management) | В этом примере объясняется, как добавлять и удалять участников <br /> из вашей группы на основе данных из внешнего источника. |
+| [github-issue-importer](github-issue-importer)       | В этом примере показано, как импортировать задачи из GitHub <br /> на доску с настраиваемыми полями с помощью Miro API. |
 | [sample-app](sample-app)       | |
 
-## Web-Plugins
-Descriptions and GIFs for those examples available [here](https://developers.miro.com/docs/web-plugin-examples).
-To learn more read [what web-plugins is it](https://developers.miro.com/docs/sdk) and [how to build your web-plugin](https://developers.miro.com/docs/how-to-start).
+## Веб-плагины
+Описания и GIF-файлы для этих примеров доступны [здесь](https://developers.miro.com/docs/web-plugin-examples).  
+Чтобы узнать больше, прочтите [что это за веб-плагины](https://developers.miro.com/docs/sdk) и [как создать свой веб-плагин](https://developers.miro.com/docs/how-to-start).
 
-|                                          | Description  |
+|                                          | Описание  |
 |------------------------------------------|--------------|
-| [prototyping](prototyping)               | With this plugin use can build interactive prototypes<br /> like in InVision or Overflow.<br /> Very comprehensive example for a lot of SDK capabilities. |
-| [drag-and-drop](drag-and-drop)           | Custom Icons Set with drag and drop on the canvas. |
-| [implicit-flow-example](implicit-flow-example)| See this example to learn how to authorise web-plugin<br /> for each user without server with implicit-flow. |
-| [buttons](buttons)                       | This example shows how to restrict buttons visibility. |
-| [extra-notes](extra-notes)               | Save custom data for widgets in LocalStorage |
-| [importer](importer)                     | Convert text list to  stickers | 
-| [looking-glass](looking-glass)           | You can see readable text of the widget in the sidebar<br /> without zooming in. |
-| [plugin-boilerplate](plugin-boilerplate) | If you like TypeScript, Webpack, and ReactJS, you can start<br /> with this example. It already includes these tools. |
-| [rtb-sticker-pack](rtb-sticker-pack)     | This example shows how to drag&drop external resources<br /> into the board |
-| [stickers-to-shapes](stickers-to-shapes) | You select several stickies, click plugin button in the bottom<br /> bar and app replaces stickies with shapes |
-| [template-builder](template-builder)     | This example shows how to create and position on the board<br /> multiple widgets of different types and render create custom<br /> interfaces in the library. |
-| [the-noun-project](the-noun-project)     | Another icon library example: shows how to drag&drop<br /> external resources into the board. |
-| [widget-counter](widget-counter)         | You select several widgets, click plugin button in the bottom bar<br /> and app show number of widgets grouped by type in the sidebar. |
-| [font-awesome](font-awesome)             | Font Awesome icon library. |
+| [prototyping](prototyping)               | С помощью этого плагина можно создавать интерактивные прототипы, <br /> как в InVision или Overflow. <br /> Очень подробный пример для множества возможностей SDK. |
+| [drag-and-drop](drag-and-drop)           | Пользовательские значки устанавливаются перетаскиванием на холст. |
+| [implicit-flow-example](implicit-flow-example)| Посмотрите этот пример, чтобы узнать, как авторизовать веб-плагин <br /> для каждого пользователя без сервера с неявным потоком. |
+| [buttons](buttons)                       | В этом примере показано, как ограничить видимость кнопок. |
+| [extra-notes](extra-notes)               | Сохранение пользовательских данных для виджетов в LocalStorage |
+| [importer](importer)                     | Преобразование текстового списка в стикеры | 
+| [looking-glass](looking-glass)           | Вы можете видеть читаемый текст виджета на боковой панели <br /> без увеличения. |
+| [plugin-boilerplate](plugin-boilerplate) | Если вам нравятся TypeScript, Webpack и ReactJS, вы можете начать <br /> с этого примера. Он уже включает эти инструменты. |
+| [rtb-sticker-pack](rtb-sticker-pack)     | В этом примере показано, как перетащить внешние ресурсы <br /> на доску. |
+| [stickers-to-shapes](stickers-to-shapes) | Вы выбираете несколько стикеров, нажимаете кнопку плагина в нижней <br /> панели, и приложение заменяет стикеры фигурами. |
+| [template-builder](template-builder)     | В этом примере показано, как создать и разместить на доске <br /> несколько виджетов разных типов, а также создать настраиваемые <br /> интерфейсы в библиотеке. |
+| [the-noun-project](the-noun-project)     | Другой пример библиотеки иконок: показывает, как перетаскивать <br /> внешние ресурсы на доску. |
+| [widget-counter](widget-counter)         | Вы выбираете несколько виджетов, нажимаете кнопку плагина на нижней панели <br />, и приложение показывает количество виджетов, сгруппированных по типу на боковой панели. |
+| [font-awesome](font-awesome)             | Библиотека иконок Font Awesome. |
 | [spreadsheet-sync](spreadsheet-sync)             | This example shows how to sync data on board with Google Sheets. |
