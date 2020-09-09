@@ -1,20 +1,20 @@
-# Spreadsheet Sync plugin
+# Плагин Spreadsheet Sync
 
-This plugin is an example of syncing data on board with Google Sheets
+Этот плагин является примером синхронизации данных на борту с Google Таблицами.
 
-## Configuration
+## Конфигурация
 
-You need to serve `spreadsheet-sync` folder on the server through https, one of the easiest ways to do it is to fork this repo and use [GitHub Pages](https://pages.github.com/) to serve it.
+Вам необходимо обслуживать папку `spreadsheet-sync` на сервере через https, один из самых простых способов сделать это - разветвить это репо и использовать [GitHub Pages](https://pages.github.com/) для его обслуживания...
 
-Next step is to create an application in miro, you can use this [guid](https://developers.miro.com/docs/getting-started) it will help you.
+Следующим шагом будет создание приложения в miro, вы можете использовать этот [guid](https://developers.miro.com/docs/getting-started), он вам поможет.
 
-Configure the application as follows:
+Настройте приложение следующим образом:
 
-- enter uri for the `spreadsheet-sync` resource in `Web-plugin` section, e.g. if you use GitHub Pages uri will be as follow: `https://<nickname>.github.io/app-examples/spreadsheet-sync/`;
-- choose `boards:read` and `boards:write` scopes.
+- введите uri для ресурса `spreadsheet-sync` в разделе `Web-plugin`, например если вы используете GitHub Pages uri будет следующим: `https://<nickname>.github.io/app-examples/spreadsheet-sync/`;
+- выберите области `boards:read` и `boards:write`.
 
 <img src="images/app-configuration.png" width="400px" alt="app-configuration" />
 
-## Run
+## Запуск
 
-Install the application using `Install app and get OAuth Token` and then open or create board within the team on which you install the app: you will see a new icon <img src="images/spreadsheet-sync.svg" width="24" height="24" style="display: inline;" /> at the bottom bar..
+Установите приложение с помощью `Install app and get OAuth Token`, а затем откройте или создайте доску в группе, в которой вы устанавливаете приложение: вы увидите новый значок <img src="images/spreadsheet-sync.svg" width="24" height="24" style="display: inline;"/> в нижней панели ..
