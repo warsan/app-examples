@@ -80,6 +80,6 @@ const boardApiService = new MiroBoardApiService(appConfig.miro)
 githubService.readIssues().then(issues => issues.forEach(issue => {
     const cardData = ConversionService.convert2Card(issue)
     boardApiService.createWidget(cardData)
-        .then(value => console.log(`card widget ${value.id} has been created from an issue ${issue.url}`))
-        .catch(reason => console.error(`*** creating card widget error: ${reason.response.status} ${JSON.stringify(reason.response.data)}`))
-})).catch(reason => console.error(`*** reading GitHub issues error: ${reason.response.status} ${JSON.stringify(reason.response.data)}`));
+        .then(value => console.log(`card widget ${value.id} был создан из проблемы ${issue.url}`))
+        .catch(reason => console.error(`*** ошибка создания виджета карты: ${reason.response.status} ${JSON.stringify(reason.response.data)}`))
+})).catch(reason => console.error(`*** ошибки чтения GitHub: ${reason.response.status} ${JSON.stringify(reason.response.data)}`));
