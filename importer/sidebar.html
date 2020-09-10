@@ -40,9 +40,9 @@
 </head>
 
 <body>
-<div class="rtb-sidebar-caption">Import widgets</div>
+<div class="rtb-sidebar-caption">Импортировать виджеты</div>
 <div class="widget-info">
-    <textarea placeholder="Paste text here" id="editor" class="editor"></textarea><br><br>
+    <textarea placeholder="Вставьте текст сюда" id="editor" class="editor"></textarea><br><br>
     <label>
         Use RegExp <input type="checkbox" id="use-regexp" checked="checked"/>
     </label><br><br>
@@ -50,13 +50,13 @@
         Split string <input type="text" id="split-string" value="\n">
     </label><br><br>
     <label>
-        Create widget type
+        Создайте тип виджета
         <select>
-            <option value="sticker" selected>Sticker</option>
-            <option value="text">Text</option>
+            <option value="sticker" selected>Стикер</option>
+            <option value="text">Текст</option>
         </select>
     </label><br><br>
-    <button onclick="onCreateClick()">Create widgets from text</button>
+    <button onclick="onCreateClick()">Создавайте виджеты из текста</button>
 </div>
 <script>
   const editorTextarea = document.querySelector('#editor')
