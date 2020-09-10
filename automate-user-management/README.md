@@ -1,57 +1,58 @@
-## Intro
-This example explains how to add and remove members from your team, based on data from an external source. 
+## Вступление
+В этом примере объясняется, как добавлять и удалять участников из вашей команды на основе данных из внешнего источника.
 
-For example, add new Miro user to a team when new mew user joins a specific slack channel, and remove a user from Miro team when a user leaves Slack channel.
+Например, добавьте нового пользователя Miro в команду, когда новый пользователь mew присоединяется к определенному каналу Slack, и удалите пользователя из команды Miro, когда пользователь покидает канал Slack.
 
-### Use case data flow
+### Поток данных варианта использования
 
-Case 1: Invite new slack users to Miro team
+Случай 1: Пригласите новых пользователей Slack в команду Miro
 
 <img src="images/invite-user.png" alt="Invite new slack users" />
  
-Case 2: Remove from Miro team that left Slack channel
+Случай 2: Удалить из команды Miro, которая покинула канал Slack
 
 <img src="images/delete-user.png" alt="Remove from Miro team" />
  
-## Preparation
+## Подготовка
 
-###### Step 1. Clone the repo and install the dependencies
+###### Шаг 1. Клонируйте репо и установите зависимости.
+
 ```bash 
 git clone https://github.com/miroapp/app-examples.git
 cd app-examples/automate-user-management
 npm install
 ``` 
 
-###### Step 2. Start Node server locally 
+###### Шаг 2. Запустите сервер узла локально.
 
 ```bash
 npm run start
 ```
 
-###### Step 3. Expose a local web server to the internet
+###### Шаг 3. Подключите локальный веб-сервер к Интернету.
 
 ```bash
 ngrok http 8000
 ```
 
-###### Step 4. Create App in Slack
+###### Шаг 4. Создайте приложение в Slack
 
-- This [guide](https://api.slack.com/start/overview#creating) shows you how to create app.
+- В этом [руководстве](https://api.slack.com/start/overview#creating) показано, как создать приложение.
 
-- Select scopes: `channels:read`, `groups:read`, `users:read`, `users:read.email`
+- Выбрать области: `channels:read`, `groups:read`, `users:read`, `users:read.email`
 
-- Verify Request URL
+- Проверить URL-адрес запроса
 
-- Enable Events: `member_joined_channel`, `member_left_channel`
+- Включить события: `member_joined_channel`, `member_left_channel`
 
-- Install the application and replace the received Sack OAuth token in the `index.js` file
+- Установите приложение и замените полученный токен Sack OAuth в файле `index.js`.
 
-###### Step 5. Create App in Miro
-- This [guide](https://developers.miro.com/docs/getting-started) shows you how to do it.
+###### Шаг 5. Создайте приложение в Miro
+- В этом [руководстве](https://developers.miro.com/docs/getting-started) показано, как это сделать.
 
-- [Scopes](https://developers.miro.com/reference#scopes) used in this example: `team:read`, `team:write`
+- [Scopes](https://developers.miro.com/reference#scopes) используется в этом примере: `team:read`, `team:write`
 
-- Install the application and replace the received Miro OAuth token in the `index.js` file
+- Установите приложение и замените полученный токен Miro OAuth в файле `index.js`.
 
 
-###### Step 6. Restart Node server
+###### Шаг 6. Перезагрузите сервер узла.
