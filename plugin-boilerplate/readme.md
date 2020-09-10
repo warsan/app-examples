@@ -1,14 +1,16 @@
-Boilerplate project already includes:
+# Проект Boilerplate
+
+Проект Boilerplate уже включает:
 - TypeScript
 - Webpack 
 - ReactJS
 - LESS
 - HelloWorld code
 
-## How to use:
+## Как пользоваться:
 
-1. Run `npm install` to install dependencies
-2. Run `npm run build` or `npm run watch` to compile app
-3. In first terminal run _http-server_ in root rep folder: `http-server -p 8081`
-4. In second terminal run _ngrok_ for https: `ngrok http 8081`
-5. Get https-url from _ngrok_ and paste it in `iframe url` in your app settings    
+1. Run `npm install` установить зависимости
+2. Run `npm run build` или `npm run watch` компилировать приложение
+3. В первом терминале запустите _http-server_ в корневой папке rep: `http-server -p 8081`
+4. Во втором терминале запустите _ngrok_ для https: `ngrok http 8081`
+5. Получите https-url от _ngrok_ и вставьте его в `iframe url` в настройках вашего приложения.    
