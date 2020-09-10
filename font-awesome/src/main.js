@@ -42,9 +42,9 @@ miro.onReady(() => {
     viewportScale = scale;
   });
 
-  // Update board's scale when user starts to interact with the app.
-  // We track zooming in such a hacky way because of the synchronous
-  // nature of getDraggableItemPreview and the lack of zoom events.
+  // Обновляйте масштаб доски, когда пользователь начинает взаимодействовать с приложением.
+  // Мы отслеживаем масштабирование таким хакерским способом из-за синхронной 
+  // природы getDraggableItemPreview и отсутствия событий масштабирования.
   document.body.addEventListener("mouseenter", async () => {
     viewportScale = await miro.board.viewport.getZoom();
   });
@@ -59,8 +59,8 @@ miro.onReady(() => {
       const [iconWidth, iconHeight] = icon.icon;
       const iconSvg = container.children[0].cloneNode(true);
 
-      // Increase width and height to make sure the icon preview
-      // will fill the preview <img> element even at max. viewport zoom
+      // Увеличьте ширину и высоту, чтобы убедиться, что значок предварительного просмотра 
+      // будет заполнять элемент <img> предварительного просмотра даже при макс. масштабировании области просмотра
       iconSvg.setAttribute("width", iconWidth * 4);
       iconSvg.setAttribute("height", iconHeight * 4);
 
