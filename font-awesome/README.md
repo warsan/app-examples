@@ -1,3 +1,3 @@
-# Font Awesome plugin
+# Плагин Font Awesome
 
-This plugin lets you use icons from [Font Awesome](https://fontawesome.com/) on your Miro boards.
+Этот плагин позволяет использовать значки из [Font Awesome](https://fontawesome.com/) на ваших досках Miro.
