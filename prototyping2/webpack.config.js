@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-	mode: 'none', // Tip! compile in 'production' mode before publish
+	mode: 'none', // Тип! скомпилировать в рабочем режиме перед публикацией
 
-	// Tip! Just delete not using files, but main.ts is required
+	// Тип! Просто удалите не используя файлы, но требуется main.ts
 	entry: {
 		index: './src/index.ts',
 		'bottom-panel': './src/bottom-panel.tsx'
