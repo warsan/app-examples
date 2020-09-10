@@ -1,29 +1,29 @@
 miro.onReady(() => {
-  // subscribe on user selected widgets
+  // подписаться на выбранные пользователем виджеты
   miro.addListener(miro.enums.event.SELECTION_UPDATED, getWidget)
   getWidget()
 })
 
-// Get html elements for tip and text container
+// Получить элементы html для подсказки и текстового контейнера
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
 async function getWidget() {
-  // Get selected widgets
+  // Получить выбранные виджеты
   let widgets = await miro.board.selection.get()
 
-  // Get first widget from selected widgets
+  // Получить первый виджет из выбранных виджетов
   let text = widgets[0].text
 
-  // Check that widget has text field
+  // Убедитесь, что у виджета есть текстовое поле
   if (typeof text === 'string') {
 
-    // hide tip and show text in sidebar
+    // скрыть подсказку и показать текст на боковой панели
     tipElement.style.opacity = '0'
     widgetTextElement.value = text
   } else {
 
-    // show tip and clear text in sidebar
+    // показать подсказку и чистый текст на боковой панели
     tipElement.style.opacity = '1'
     widgetTextElement.value = ''
   }
