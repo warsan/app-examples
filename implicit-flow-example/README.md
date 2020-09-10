@@ -1,7 +1,7 @@
-## Example of web-plugin installation without server.
+## Пример установки веб-плагина без сервера.
 
 
-This plugin will clear the board by clicking bottom-bar button.
-The plugin will be able to clear the board only after the user authorizes next scopes:
+Этот плагин очистит доску, нажав кнопку на нижней панели.
+Плагин сможет очистить доску только после того, как пользователь авторизует следующие области:
  - boards:read
  - boards:write
