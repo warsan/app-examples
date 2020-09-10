@@ -1,11 +1,12 @@
-## Intro
-This is a sample of plugin with drag-and-drop content to the canvas:
+# Вступление
+
+Это образец плагина с перетаскиванием содержимого на холст:
 
 <img src="drag-and-drop.gif" alt="drag-and-drop" />
 
-## How to use
+## Как пользоваться
 
-- Clone the repo
-- Run _http-server_ in root rep folder: `http-server -p 8081`
-- Run _ngrok_ for https: `ngrok http 8081`
-- Get https url from _ngrok_ and paste it in `iframe url` in your app settings.    
+- Клонировать репо
+- Запустить _http-server_ в корневой папке rep: `http-server -p 8081`
+- Запустить _ngrok_ для https: `ngrok http 8081`
+- Получите https-URL из _ngrok_ и вставьте его `iframe url` в настройках вашего приложения.    
