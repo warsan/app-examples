@@ -1,12 +1,12 @@
-## GitHub issues importer app
+## GitHub выдает приложение для импорта
 
-This example shows how to import issues from GitHub to a board with custom fields using Miro API
+В этом примере показано, как импортировать задачи из GitHub на доску с настраиваемыми полями с помощью Miro API.
 
 <img src="images/run-app.gif" alt="run-app" />
 
-## Common setup
+## Общая настройка
 
-Clone the repo and install the dependencies
+Клонируйте репо и установите зависимости
 
 ```bash
 git clone https://github.com/miroapp/app-examples.git
@@ -17,9 +17,9 @@ cd app-examples/github-issue-importer
 npm install
 ```
 
-## Configuration
+## Конфигурация
 
-All configuration properties are stored within `config.js`:
+Все свойства конфигурации хранятся в `config.js`:
 ```javascript
 {
     github: {
@@ -33,24 +33,23 @@ All configuration properties are stored within `config.js`:
 }
 ```
 
-Properties which should be configured:
-- `github-token` - GitHub token with reading issues permissions, e.g. with `repo` scope;
-- `miro-token` - miro token with `boards:write` scope;
-- `board-id` - board id for which `miro-token` has access to;
-- `frame-id` - frame id which will hold the created widgets
+Свойства, которые необходимо настроить:
+- `github-token` - Токен GitHub с разрешениями на чтение, например с объемом `репо`;
+- `miro-token` - токен miro с областью действия `board:write`;
+- `board-id` - идентификатор платы, к которой имеет доступ `miro-token`;
+- `frame-id` - идентификатор кадра, который будет содержать созданные виджеты
 
-> **How to get frame id?**
+> **Как получить идентификатор кадра?**
 > 
-> Click on "Copy link" as shown in the screenshot below:
+> Нажмите «Копировать ссылку», как показано на скриншоте ниже:
 >
 > <img src="images/tip-copy-link-to-widget.png" alt="copy-link-to-widget-screenshot" />
 >
-> The copied link would have frame id within `moveToWidget` query param, 
-> e.g. `https://miro.com/app/board/<board-id>/?moveToWidget=3074457346806294028`
+> Скопированная ссылка будет иметь идентификатор кадра в параметре запроса moveToWidget,> например: `https://miro.com/app/board/<board-id>/?moveToWidget=3074457346806294028`
 
-## Run
+## Пуск
 
-To import data onto the board, run the following
+Чтобы импортировать данные на доску, запустите следующее
 
 ```bash
 npm start
